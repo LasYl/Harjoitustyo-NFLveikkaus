@@ -178,7 +178,7 @@ const get_week = (req, res, next) => {
    
    /* pick_model.find({}).then((pick) => {  
     let data =  { 
-            picks:pick
+            picks:pick 
      }; 
      let html =  item_views.item_view(data);
      return res.write(html);
