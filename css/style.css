@@ -1,0 +1,108 @@
+
+.delete_button {
+    background-color: orangered;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    border: none;
+    font-size: 16px;
+    margin: 5px;
+}
+
+button {
+    background-color: greenyellow;
+    cursor: pointer;
+    text-align: center;
+    color: darkblue;
+    border: solid darkblue;
+    font-size: 16px;
+    margin: 5px;
+    
+}
+
+h4 {
+    position: absolute;
+    top: 2em;
+    left: 1em;
+    width: 9em;
+    color: red;
+    
+  }
+
+
+  .front {    
+    position:absolute;
+    top:35%;
+    left: 50%;
+    margin-top: -9em; 
+    margin-left: -9em; 
+    border: 5px solid gold;
+    background-color: #f3f3f3;
+  }
+
+  h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: red;
+    font-size: 110px;
+    }
+
+    .user {
+     float:right;  
+    }
+
+    #user {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: +1;
+    size: 15px;
+    text-align: center;
+     }
+
+     #title {
+      align-items: left;
+      display: inline-block; 
+     }
+
+     .top {
+       
+       margin: 0em;
+     }
+
+     .addlist{
+      
+      font-size: xx-large;
+      top: 20px;
+      margin: 0em;
+      border: 5px solid gold;
+      background-color: #f3f3f3;
+      display: inline-block
+     }
+
+     .saved{
+      
+      margin: 0em;
+      display: inline-block
+     
+      
+     }
+
+     h2{
+       color:gold;
+       border: 5px solid gold;
+      background-color: #f3f3f3;
+      width: 1500px;
+      text-align: center;;
+
+     }
+
+  
+  
+  #parent > li {
+      display: inline-block;
+      background-color: red;
+  }
+  
+  #parent > li:nth-child(even) {
+      background-color: blue;
+  }
