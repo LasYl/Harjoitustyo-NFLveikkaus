@@ -1,11 +1,5 @@
 const item_view = ((data) => {
-  /* console.log(data.picks);
-  data.picks.forEach((pick) => {
-    console.log(pick.text);
-  }); */
-
  
-
  
     let html = `
     <html>
@@ -121,6 +115,15 @@ const item_view = ((data) => {
 
        
     data.games.forEach((game) => {
+      let yourPick ="-";
+      data.picks.forEach((pick) => {
+        
+        if (pick.game_id.equals(game._id) && pick.user_id.equals(data.user_id)  ){
+          //if ((pick.user_id == data.user_id) || (pick.game_id == game._id)){
+          yourPick = pick.text;
+          }
+       
+      });
     let winner 
         if (game.hscore - game.vscore > 0){
           winner = game.home;
@@ -170,6 +173,21 @@ const item_view = ((data) => {
         submitButton = "";
         pickform = "-";
         }
+        else if (yourPick != "-"){
+          pickform = `<form action="/update-pick/" method="POST"> 
+          <select id="test" name="test">
+                        <option disabled selected value></option>
+                          <option value="${game.home}">${game.home}</option>
+                          <option value="${game.visitor}">${game.visitor}</option>
+                      </select>`;
+          submitButton = `<td>
+          <input type="hidden" name="game_id" value=${game._id}>
+          <input type="hidden" name="user" value="${data.user_id}">
+          <input type="hidden" name="week_id" value="${data.weekid}">
+          <button type="submit">Update pick</button>
+          </form></td>`;}
+        
+
         else{
         
         
@@ -179,7 +197,7 @@ const item_view = ((data) => {
                         <option value="${game.home}">${game.home}</option>
                         <option value="${game.visitor}">${game.visitor}</option>
                     </select>`;
-                    submitButton = `<td>
+        submitButton = `<td>
         <input type="hidden" name="game_id" value=${game._id}>
         <input type="hidden" name="user" value="${data.user_id}">
         <input type="hidden" name="week_id" value="${data.weekid}">
@@ -211,6 +229,7 @@ const item_view = ((data) => {
             <td>${vpoints}</td>
             <td>${game.visitor}</td>
             <td>${winner}</td>
+            <td>${yourPick}</td>
             <td>${pickform}</td>
            ${submitButton}
             </tr>

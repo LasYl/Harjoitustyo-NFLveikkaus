@@ -11,12 +11,12 @@ const week_schema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'game',
         req: true
-    }]/* ,
+    }] ,
     picks: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'pick',
         req: true
-    }] */
+    }] 
 });
 const week_model = new mongoose.model('week', week_schema);
 

@@ -64,6 +64,7 @@ app.get('/week/:id', is_logged_handler, list_controller.get_week);
 app.get('/', is_logged_handler, list_controller.get_weeks);
 app.post('/submit-pick', is_logged_handler, list_controller.post_pick);
 app.post('/update-games', is_logged_handler, list_controller.post_update_games);
+app.post('/update-pick', is_logged_handler, list_controller.post_update_pick);
 //app.get('/week/:id', is_logged_handler, list_controller.get_picks);
 
 

@@ -190,19 +190,20 @@ const get_week = (req, res, next) => {
         _id: week_id
     }).then((week) => {
         week.populate('games').execPopulate().then(() => {
+            week.populate('picks').execPopulate().then(() => {
             let data = {
                 user_name: user.name,
                 week_name: week.text,
                 games: week.games,
                 weekid: week._id,
                 user_id: user._id,
-                //picks : query    
+                picks : week.picks    
             };
             
             let html =  item_views.item_view(data);
             res.send(html); 
                 
-        })    
+        })  })  
     })
     //res.end();
 };
@@ -217,9 +218,9 @@ const post_pick = (req, res, next) => {
     console.log(user);
         
    
-    // week_model.findOne({
-    //     _id: week_id
-    // }).then((week) => {
+    week_model.findOne({
+         _id: week_id
+     }).then((week) => {
         
         let new_pick= pick_model({
             text: pick,
@@ -227,14 +228,41 @@ const post_pick = (req, res, next) => {
             game_id: game_id
         });
 
+        new_pick.save().then(() => {
+            week.picks.push(new_pick);
+            console.log("pick: ", user.name, " ", pick, " saved")
+            week.save().then(() => { 
+                
+            return res.redirect(`/week/${week_id}`);                        
+            });
+            });
     
 
-         new_pick.save().then(() => {
+        /*  new_pick.save().then(() => {
            
             console.log("pick: ", user.name, " ", pick, " saved")
             return res.redirect(`/week/${week_id}`);
-        });
-   // }); 
+        }); */
+    }); 
+}
+
+const post_update_pick = (req, res, next) => {
+    let user = req.body.user;
+    let game = req.body.game_id;
+    console.log(game,user);
+    const week_id = req.body.week_id;
+    const pick = req.body.test;
+    console.log(pick);
+    pick_model.findOneAndUpdate({game_id: game, user_id:user}, {$set: {text: pick }}, {upsert: true,returnOriginal:false, useFindAndModify: false}, function(err,doc) {
+
+        if (err) { throw err; }
+ 
+        else { console.log("Updated"); }
+        
+        return res.redirect(`/week/${week_id}`);    
+
+      }); 
+
 }
 
 
@@ -282,14 +310,14 @@ const post_update_games = (req, res, next) => {
                                  
                                         else { console.log("Updated"); }
                                         
-                                            
+                                        return res.redirect(`/week/${week_id}`);    
 
                                       }); 
                                       
                                     
     
 
-                                      return res.redirect(`/week/${week_id}`);
+                                      
      
     
     
@@ -334,4 +362,5 @@ module.exports.post_games = post_games;
 module.exports.get_week = get_week;
 module.exports.post_pick = post_pick;
 module.exports.post_update_games = post_update_games;
+module.exports.post_update_pick = post_update_pick;
 //module.exports.get_picks = get_picks;
