@@ -13,15 +13,7 @@ const board_view = (data) => {
     <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-    < <div class="front">
-        <form action="/login" method="POST">
-            <input type="text" name="user_name">
-            <button type="submit">Log in</button>
-        </form>
-        <form action="/register" method="POST">
-            <input type="text" name="user_name">
-            <button type="submit">Register</button>
-        </form>
+    
         <div>
     </body>
     <html>

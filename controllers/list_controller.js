@@ -1,6 +1,6 @@
 
-const item_views = require('../views/item-views');
-const list_views = require('../views/list-views');
+const week_views = require('../views/week-views');
+const main_views = require('../views/main-views');
 const board_views = require('../views/board-views');
 
 const week_model = require('../models/week-model');
@@ -22,7 +22,7 @@ const get_weeks = (req, res, next) => {
             weeks: week
         };
         
-        let html = list_views.list_view(data);
+        let html = main_views.main_view(data);
         res.send(html);
     });
 };
@@ -148,7 +148,7 @@ const get_week = (req, res, next) => {
                 picks : week.picks    
             };
             
-            let html =  item_views.item_view(data);
+            let html =  week_views.week_view(data);
             res.send(html); 
                 
         })  })  

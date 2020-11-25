@@ -1,4 +1,4 @@
-const item_view = ((data) => {
+const week_view = ((data) => {
  
  
     let html = `
@@ -247,4 +247,4 @@ html +=
     return html;
 });
 
-module.exports.item_view = item_view;
+module.exports.week_view = week_view;

@@ -1,5 +1,5 @@
 
-const list_view = ((data) => {
+const main_view = ((data) => {
     
     let html = `
     <html>
@@ -105,4 +105,4 @@ const list_view = ((data) => {
     return html;
 });
 
-module.exports.list_view = list_view;
+module.exports.main_view = main_view;
