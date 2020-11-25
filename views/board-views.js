@@ -1,9 +1,10 @@
+ // background-image: url("https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/dolphins/f3knfjv3uhmtmblle3vd");
 const board_view = (data) => {
     let html = `
     <html>
     <style>
     body {
-    background-image: url("https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/dolphins/f3knfjv3uhmtmblle3vd");
+   
     
     background-size: contain;
     }
