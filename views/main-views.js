@@ -24,6 +24,11 @@ const main_view = ((data) => {
             <button type="submit">Log out</button>
             </form>
             </form>
+
+            `;
+
+        //Add weeks and games manually   
+       /*      html += `
         <form action="/games" method="POST">
         <input type="text" name="game">
         <button type="submit">Add game</button>
@@ -32,31 +37,17 @@ const main_view = ((data) => {
         <input type="text" name="text">
         <button type="submit">Add weeks</button>
     </form>
-        </div>
+    */
+    html += `
     </div>
-    </body>
+    </div>
+    </body> 
     <body>
     <hr>
-    `;
-
-       /*<div class="addlist"> 
-       
-       Add new list
-        <form action="/add-list" method="POST">
-            <input type="text" name="list">
-            <button type="submit">Add list</button>
-        </form>
-        <form action="/games" method="POST">
-        <input type="text" name="game">
-        <button type="submit">Add game</button>
-    </form>
-    <form action="/add-weeks" method="POST">
-        <input type="text" name="text">
-        <button type="submit">Add weeks</button>
-    </form>
-        </div><hr>
-        <br><br><br><br><br><br><br><br> */
-    html += ` 
+    
+ 
+    
+    
         <div class="saved">
         <h2>WEEKS:</h2>       
         <table>
@@ -64,22 +55,7 @@ const main_view = ((data) => {
     `;
      
     
-   /*  data.lists.forEach((list) => {
-        html += `
-        
-            <a href="/list/${list._id}"><h3>${list.text}</h3></a>
-            <form action="delete-list" method="POST">
-                <input type="hidden" name="list_id" value="${list._id}">
-                <button type="submit">Delete list</button>
-            </form>
-          <div>}</div>
-    
-            `;
-        }); 
-         <form action="delete-list" method="POST">
-                <input type="hidden" name="list_id" value="${week._id}">
-                <button type="submit">Delete list</button>
-            </form> */
+   
       data.weeks.forEach((week) => {
         html += ` 
             <td><a href="/week/${week._id}"><h1>${week.text}</h1></a></td>
@@ -89,12 +65,8 @@ const main_view = ((data) => {
     html += `
     </tr>
     </table>
-    <form action="/leaderboard" method="POST">
-    <input type="hidden" name="weeks" value="${data.weeks}">
-    <input type="hidden" name="week_id" value="${data.weekid}">
-        <button type="submit">Leaderboard</button>
-    </form>
-    <a href="/leaderboard"><h1>Board</h1></a>
+    
+    <a href="/leaderboard"><h1>LEADERBOARD</h1></a>
     </div>
     </body>
     </html>

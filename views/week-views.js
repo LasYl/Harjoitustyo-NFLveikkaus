@@ -97,13 +97,7 @@ const week_view = ((data) => {
             <input type="hidden" name="week_name" value="${data.week_name}">
             <input type="hidden" name="week_id" value="${data.weekid}">
             <button type="submit">Refresh</button>
-            </form>
-
-             
-
-
-            
-            
+            </form>     
     </div>
         <table id="example" width="600">
         <caption><h3>Games</h3></caption>

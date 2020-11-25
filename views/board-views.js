@@ -14,9 +14,9 @@ const board_view = (data) => {
     </head>
     <body>
     
-        <div>
+        <p style="color:white;">Under construction...</p>
     </body>
-    <html>
+    </html>
     `;
     return html;
 };
