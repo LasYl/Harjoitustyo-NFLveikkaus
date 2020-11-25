@@ -1,18 +1,13 @@
 
 const item_views = require('../views/item-views');
 const list_views = require('../views/list-views');
+const board_views = require('../views/board-views');
 
 const week_model = require('../models/week-model');
 const game_model = require('../models/game-model');
 const pick_model = require('../models/pick-model');
 
 const DOMParser = require('xmldom').DOMParser;
-/* const axios = require('axios');
-const express = require('express');
-
-const body_parser = require('body-parser');
-const session = require('express-session');
-const mongoose = require('mongoose'); */
 const fetch = require("node-fetch");
 var jsdom = require("jsdom");
 var JSDOM = jsdom.JSDOM;
@@ -123,69 +118,22 @@ const post_games = (req, res, next) => {
 };
 
 
-/* const get_week = (req, res, next) => {
-    const week_id = req.params.id;
-    const user = req.user;
-    var send= pick_model.find({})
-    .then((pick) => {  
-    let data =  { 
-            picks:pick
-     }; 
-     return data;
-     //let html =  item_views.item_view(data);
-     //send.write(data);
-     //console.log('tassa',send);
-     //res.write(html);
-    })
-    var json = JSON.stringify(send);
-    console.log(json); 
-    
-    
-    week_model.findOne({
-        _id: week_id
-    }).then((week) => {
-        week.populate('games').execPopulate().then(() => {
-            let data = {
-                user_name: user.name,
-                week_name: week.text,
-                games: week.games,
-                weekid: week._id,
-                user_id: user._id,
-                picks : week.picks    
-            };
-            //send.write(data);
-            // res.append(data);
-            /*console.log('tassa',send);
-            let html =  item_views.item_view(data);
-            res.append(data);
-            res.append(html); s
+const get_board = (req, res, next) => {
+  
+        let data = {
             
-            res.send(); 
-            let html =  item_views.item_view(data);
-    
-    res.send(html);
-             
-        })    
-    })
-    
-    
-}; */
+        };
+        
+        let html = board_views.board_view(data);
+        res.send(html);
+   // });
 
+}
 
 const get_week = (req, res, next) => {
     const week_id = req.params.id;
     const user = req.user;
-   
-   /* pick_model.find({}).then((pick) => {  
-    let data =  { 
-            picks:pick 
-     }; 
-     let html =  item_views.item_view(data);
-     return res.write(html);
-    }) */
 
-    
-    
     week_model.findOne({
         _id: week_id
     }).then((week) => {
@@ -310,9 +258,10 @@ const post_update_games = (req, res, next) => {
                                  
                                         else { console.log("Updated"); }
                                         
-                                        return res.redirect(`/week/${week_id}`);    
+                                           
 
                                       }); 
+                                      return res.redirect(`/week/${week_id}`); 
                                       
                                     
     
@@ -363,4 +312,5 @@ module.exports.get_week = get_week;
 module.exports.post_pick = post_pick;
 module.exports.post_update_games = post_update_games;
 module.exports.post_update_pick = post_update_pick;
+module.exports.get_board = get_board;
 //module.exports.get_picks = get_picks;

@@ -154,7 +154,7 @@ const item_view = ((data) => {
         var year = dateObj.getUTCFullYear();
         var hours = dateObj.getUTCHours();
         var minutes = dateObj.getUTCMinutes();
-        
+        console.log(day);
         newdate = day + "." + month + "." + year;
         
         if (minutes<10)
@@ -162,19 +162,21 @@ const item_view = ((data) => {
         
         else
         newtime = hours + ":" + minutes;
-
+        dateObj.setHours(dateObj.getHours() - 2);
         var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        
+        console.log('day',dateObj,days[dateObj.getDay()]);
         var dayName = days[dateObj.getDay()];
         var submitButton
         var pickform
-        if (Date.parse(dateObj) - Date.now() < 0){
+        console.log(Date.parse(dateObj) , Date.now())
+        if (Date.parse(dateObj) - Date.now() < 3600000){
         
         submitButton = "";
         pickform = "-";
         }
         else if (yourPick != "-"){
-          pickform = `<form action="/update-pick/" method="POST"> 
+          pickform = "-";
+          /* pickform = `<form action="/update-pick/" method="POST"> 
           <select id="test" name="test">
                         <option disabled selected value></option>
                           <option value="${game.home}">${game.home}</option>
@@ -185,7 +187,10 @@ const item_view = ((data) => {
           <input type="hidden" name="user" value="${data.user_id}">
           <input type="hidden" name="week_id" value="${data.weekid}">
           <button type="submit">Update pick</button>
-          </form></td>`;}
+          </form></td>` */
+          submitButton = "";
+        pickform = yourPick;
+          ;}
         
 
         else{
@@ -203,19 +208,7 @@ const item_view = ((data) => {
         <input type="hidden" name="week_id" value="${data.weekid}">
         <button type="submit">Submit pick</button>
         </form></td>`;}
-                    //
-                    {/*<input type="hidden" name="game_id" value=${game._id}>
-        <input type="hidden" name="user" value="${data.user_id}">
-        <input type="hidden" name="pickvalue" value= "">
-                       <form action="/submit-pick/" method="POST"> 
-                    <select id="test" name="test">
-                    <option value="-">-</option>
-                    <option value="testi1">"testi1"</option>
-                    <option value="testi2">testi2</option>
-                </select>
-                    
-                <button type="submit" id="submit">Submit pick</button>
-                </form>  */}
+
         html += `
         
         <tr>
@@ -229,37 +222,14 @@ const item_view = ((data) => {
             <td>${vpoints}</td>
             <td>${game.visitor}</td>
             <td>${winner}</td>
-            <td>${yourPick}</td>
+            
             <td>${pickform}</td>
            ${submitButton}
             </tr>
             `;
             
     });
-/* 
- <tr>
-            <form action="/delete-item/" method="POST">
-                <input type="hidden" name="item_id" value="">
-                <input type="hidden" name="list_id" value="">
-                <button type="submit">Delete item</button>
-            </form></td>
-    let sum=0;
-   data.items.forEach((item) => {
-        html += `<tr>
-            <td>${item.text}</td> 
-            <td>${item.quantity}</td> 
-            <td>${item.price*item.quantity}</td>
-            <td>
-            <form action="/delete-item/" method="POST">
-                <input type="hidden" name="item_id" value="${item._id}">
-                <input type="hidden" name="list_id" value="${data.list_id}">
-                <button type="submit">Delete item</button>
-            </form></td>
-            </tr>
-            `;
-            sum= sum + item.price*item.quantity;
-    }); */
-       
+
     html +=
          `
         <div>

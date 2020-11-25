@@ -89,6 +89,12 @@ const list_view = ((data) => {
     html += `
     </tr>
     </table>
+    <form action="/leaderboard" method="POST">
+    <input type="hidden" name="weeks" value="${data.weeks}">
+    <input type="hidden" name="week_id" value="${data.weekid}">
+        <button type="submit">Leaderboard</button>
+    </form>
+    <a href="/leaderboard"><h1>Board</h1></a>
     </div>
     </body>
     </html>

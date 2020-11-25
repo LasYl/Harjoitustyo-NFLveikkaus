@@ -1,9 +1,9 @@
-const login_view = () => {
+const board_view = (data) => {
     let html = `
     <html>
     <style>
     body {
-    background-image: url("https://www.psdcovers.com/wp-content/uploads/2012/07/NFL-vector-logos-1024x772.jpg");
+    background-image: url("https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/dolphins/f3knfjv3uhmtmblle3vd");
     
     background-size: contain;
     }
@@ -26,8 +26,7 @@ const login_view = () => {
     </body>
     <html>
     `;
-
     return html;
-}
+};
 
-module.exports.login_view = login_view;
+module.exports.board_view = board_view;
