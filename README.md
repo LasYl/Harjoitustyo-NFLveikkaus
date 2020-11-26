@@ -2,4 +2,4 @@
 
 Pick winner for each NFL-game.
 
-Leaderboard for points is not raedy..
+Leaderboard for points is not ready..
