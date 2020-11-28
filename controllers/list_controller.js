@@ -9,6 +9,7 @@ const pick_model = require('../models/pick-model');
 
 const DOMParser = require('xmldom').DOMParser;
 const fetch = require("node-fetch");
+const user_model = require('../models/user-model');
 //var jsdom = require("jsdom");
 //var JSDOM = jsdom.JSDOM;
 
@@ -119,16 +120,41 @@ const post_games = (req, res, next) => {
 
 
 const get_board = (req, res, next) => {
-  
-        let data = {
+    user_model.find({}, function(err, collection) {
+        if(err) {
+             console.log(err);
+        } else {
+            game_model.find({}, function(err, collection2) {
+                  if(err) {
+                       console.log(err)
+                  } else {
+                    
+                       //res.render("page", {collection: collection, collection2: collection2});
+                       let data = {
+                           users:collection,
+                           games:collection2
+
             
-        };
+                    };
+                    data.populate('games').execPopulate().then(() => {
+                        let data2 = {
+                            
+                            games:games
+ 
+             
+                     };
+                    let html = board_views.board_view(data2);
+                    res.send(html); 
+                });
+                     
+             } 
+        });
+   } }); };
+
         
-        let html = board_views.board_view(data);
-        res.send(html);
    // });
 
-}
+
 
 const get_week = (req, res, next) => {
     const week_id = req.params.id;

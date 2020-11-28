@@ -104,7 +104,9 @@ const week_view = ((data) => {
         <th>Date\t</th><th>Day</th><th>Time</th><th>Hometeam</th><th></th><th>Score</th><th></th><th>Awayteam</th><th>Winner</th><th>Your pick</th>
         `;
       
-
+        let color
+        let amount =0;
+        let win=0;
         
 
        
@@ -148,7 +150,7 @@ const week_view = ((data) => {
         var year = dateObj.getUTCFullYear();
         var hours = dateObj.getUTCHours();
         var minutes = dateObj.getUTCMinutes();
-        console.log(day);
+        
         newdate = day + "." + month + "." + year;
         
         if (minutes<10)
@@ -166,22 +168,11 @@ const week_view = ((data) => {
         if (Date.parse(dateObj) - Date.now() < 3600000){
         
         submitButton = "";
-        pickform = "-";
+        pickform = yourPick;
         }
         else if (yourPick != "-"){
           pickform = "-";
-          /* pickform = `<form action="/update-pick/" method="POST"> 
-          <select id="test" name="test">
-                        <option disabled selected value></option>
-                          <option value="${game.home}">${game.home}</option>
-                          <option value="${game.visitor}">${game.visitor}</option>
-                      </select>`;
-          submitButton = `<td>
-          <input type="hidden" name="game_id" value=${game._id}>
-          <input type="hidden" name="user" value="${data.user_id}">
-          <input type="hidden" name="week_id" value="${data.weekid}">
-          <button type="submit">Update pick</button>
-          </form></td>` */
+          
           submitButton = "";
         pickform = yourPick;
           ;}
@@ -203,6 +194,21 @@ const week_view = ((data) => {
         <button type="submit">Submit pick</button>
         </form></td>`;}
 
+        
+        //let color = '#00FF00';
+        if (winner == "" || pickform == "-")
+        color = 'white';
+        
+        else if (winner == pickform){
+        color = '#00FF00';
+        win++;
+        amount++;
+        }
+        else{
+        color = 'red';
+        amount++;
+        }
+
         html += `
         
         <tr>
@@ -217,15 +223,37 @@ const week_view = ((data) => {
             <td>${game.visitor}</td>
             <td>${winner}</td>
             
-            <td>${pickform}</td>
+            <td style bgcolor=${color}>${pickform}</td>
            ${submitButton}
             </tr>
             `;
             
     });
+    let result ="";
+    let percent = Math.round(win/amount*100);
+    
+    if (amount >0){
+      result =` <tr>
+            
+      <td></td> 
+      <td></td> 
+      <td></td>  
+      <td></td> 
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      
+      <td><b>${win}/${amount} = ${percent} %</b></td>
+     
+      </tr>`;
+    }
 
     html +=
          `
+         ${result}
+         
         <div>
        
         </div>

@@ -1,5 +1,6 @@
  // background-image: url("https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/dolphins/f3knfjv3uhmtmblle3vd");jji
 const board_view = (data) => {
+    console.log(data);
     let html = `
     <html>
     <style>

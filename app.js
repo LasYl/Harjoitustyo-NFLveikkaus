@@ -1,5 +1,5 @@
 const express = require('express');
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 const body_parser = require('body-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
