@@ -1,5 +1,8 @@
 
 const main_view = ((data) => {
+    data.weeks.forEach((week) => {
+    console.log(week.games);
+    });
     
     let html = `
     <html>

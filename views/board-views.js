@@ -4,7 +4,7 @@ const board_view = (data) => {
     <html>
     <style>
     body {
-   
+    background-image: url("https://static.clubs.nfl.com/image/private/t_editorial_landscape_12_desktop/dolphins/f3knfjv3uhmtmblle3vd");
     
     background-size: contain;
     }

@@ -51,7 +51,6 @@ const post_register = (req, res, next) => {
 
         let new_user = new user_model({
             name: user_name,
-            lists: []
         });
 
         new_user.save().then(() => {

@@ -9,8 +9,8 @@ const pick_model = require('../models/pick-model');
 
 const DOMParser = require('xmldom').DOMParser;
 const fetch = require("node-fetch");
-var jsdom = require("jsdom");
-var JSDOM = jsdom.JSDOM;
+//var jsdom = require("jsdom");
+//var JSDOM = jsdom.JSDOM;
 
 
 const get_weeks = (req, res, next) => {
@@ -186,11 +186,7 @@ const post_pick = (req, res, next) => {
             });
     
 
-        /*  new_pick.save().then(() => {
-           
-            console.log("pick: ", user.name, " ", pick, " saved")
-            return res.redirect(`/week/${week_id}`);
-        }); */
+    
     }); 
 }
 
